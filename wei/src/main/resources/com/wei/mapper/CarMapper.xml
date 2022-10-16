@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wei.mapper.CarMapper">
+
+    <select id="list" resultType="com.wei.entity.Car">
+        select * from car
+    </select>
+
+    <select id="listPage" resultType="com.wei.entity.Car">
+        select * from car
+            limit #{page} , #{limit}
+    </select>
+
+    <insert id="insert">
+        insert into car(xinghao,pinpai,jy1,jy2,jy3)
+        values(#{xinghao},#{pinpai},#{jy1},#{jy2},#{jy3} )
+    </insert>
+
+    <select id="selectById" resultType="com.wei.entity.Car">
+        SELECT
+            *
+        FROM
+            car
+        where id=#{id}
+    </select>
+
+    <update id="update">
+        update car
+        <set>
+            <if test="xinghao != null and xinghao != '' ">xinghao=#{xinghao},</if>
+            <if test="pinpai != null and pinpai != '' ">pinpai=#{pinpai},</if>
+            <if test="jy1 != null and jy1 != '' ">jy1=#{jy1},</if>
+            <if test="jy2 != null and jy2 != '' ">jy2=#{jy2},</if>
+            <if test="jy3 != null and jy3 != '' ">jy3=#{jy3},</if>
+            <if test="tu1 != null and tu1 != '' ">tu1=#{tu1},</if>
+            <if test="tu2 != null and tu2 != '' ">tu2=#{tu2},</if>
+            <if test="tu3 != null and tu3 != '' ">tu3=#{tu3},</if>
+            <if test="zu1 != null and zu1 != '' ">zu1=#{zu1},</if>
+            <if test="zu2 != null and zu2 != '' ">zu2=#{zu2},</if>
+            <if test="zu3 != null and zu3 != '' ">zu3=#{zu3},</if>
+            <if test="zu4 != null and zu4 != '' ">zu4=#{zu4},</if>
+            <if test="zu5 != null and zu5 != '' ">zu5=#{zu5},</if>
+            <if test="zu6 != null and zu6 != '' ">zu6=#{zu6},</if>
+            <if test="zu7 != null and zu7 != '' ">zu7=#{zu7},</if>
+            <if test="zu8 != null and zu8 != '' ">zu8=#{zu8},</if>
+            <if test="zu9 != null and zu9 != '' ">zu9=#{zu9},</if>
+            <if test="zu10 != null and zu10 != '' ">zu10=#{zu10},</if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <delete id="delete">
+        delete from car where id=#{id}
+    </delete>
+
+    <select id="select" resultType="com.wei.entity.Car">
+        SELECT *
+        FROM
+        car
+        <where>
+            <if test="xinghao != null and xinghao != '' ">and xinghao=#{xinghao} </if>
+            <if test="pinpai != null and pinpai != '' ">and pinpai=#{pinpai} </if>
+            <if test="jy1 != null and jy1 != '' ">and jy1=#{jy1} </if>
+            <if test="jy2 != null and jy2 != '' ">and jy2=#{jy2} </if>
+            <if test="jy3 != null and jy3 != '' ">and jy3=#{jy3} </if>
+        </where>
+    </select>
+
+</mapper>
